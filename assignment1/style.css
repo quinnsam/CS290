@@ -1,14 +1,10 @@
 
-/*Table Rules*/
+/*table rules*/
+table#content{border:1px solid black;}
+  table#content td{border:1px solid black;}
+  table#content th{border:1px solid black;}
+  table#content tbody th{font-style:italic;}
 
-th:first-child{
-  font-style:italic;
-}
-
-#item1{
-  border:1px solid black;
-}
-
-th,td{
-  border:1px double black;
-}
+/*div element with an outer pink box and inner blue box*/
+div.outer-content{background-color:pink; width:75%; padding:5px; margin-top:20px;}
+div.inner-content{background-color:lightblue; width:75%; margin:0px auto;}
