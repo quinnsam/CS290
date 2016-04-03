@@ -1,0 +1,14 @@
+
+/*Table Rules*/
+
+th:first-child{
+  font-style:italic;
+}
+
+#item1{
+  border:1px solid black;
+}
+
+th,td{
+  border:1px double black;
+}
