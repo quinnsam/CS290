@@ -10,3 +10,9 @@ table#content{border:1px solid black;}
 /*div element with an outer pink box and inner blue box*/
 div.outer-content{background-color:pink; width:75%; padding:5px; margin-top:20px;}
 div.inner-content{background-color:lightblue; width:75%; margin:0px auto;}
+
+/*form rules*/
+label{border:1px solid black; display:block; width:95%; padding:5px; margin:0px auto;}
+section#candy-radio{border:1px solid black; width:95%; padding:5px; margin:0px auto;}
+  section#candy-radio label{border:none; padding:0px; margin:0px}
+  section#candy-radio label input[type="submit"]{margin-bottom:5px;}
