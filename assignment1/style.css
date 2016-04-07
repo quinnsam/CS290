@@ -1,18 +1,26 @@
 
+/*CS290 Assignment 1 CSS file*/
+/*Elton Lee*/
+/*4-6-2016*/
+
 /*table rules*/
+/*Complementary color scheme generated from paletton.com*/
 table#content{border:1px solid black;}
   table#content td{border:1px solid black;}
   table#content th{border:1px solid black;}
   table#content tbody tr th{font-style:italic; font-weight:normal;}
-  table#content tbody tr:nth-of-type(2n){background-color:lightblue;}
-  table#content tbody tr:nth-of-type(2n+1){background-color:turquoise;}
+  table#content tbody tr:nth-of-type(2n){background-color:#42847D;}
+  table#content tbody tr:nth-of-type(2n+1){background-color:#D4976A;}
+  table#content tbody tr td:nth-of-type(1){color:#FFCEAA;}
+  table#content tbody tr td:nth-of-type(2){color:#FFFFFF;}
+
 
 /*div element with an outer pink box and inner blue box*/
-div.outer-content{background-color:pink; width:75%; padding:5px; margin-top:20px;}
-div.inner-content{background-color:lightblue; width:75%; margin:0px auto;}
+div.outer-content{background-color:pink; width:75%; padding:5px; margin-top:20px; margin-left:0;}
+div.inner-content{background-color:lightblue; width:75%; margin:0 auto;}
 
 /*form rules*/
-label{border:1px solid black; display:block; width:95%; padding:5px; margin:0px auto;}
-section#candy-radio{border:1px solid black; width:95%; padding:5px; margin:0px auto;}
-  section#candy-radio label{border:none; padding:0px; margin:0px}
-  section#candy-radio label input[type="submit"]{margin-bottom:5px;}
+label{border:1px solid black; display:block; width:95%; padding:5px; margin:0 auto;}
+section.candy-radio{border:1px solid black; width:95%; padding:5px; margin:0 auto;}
+  section.candy-radio label{border:none; padding:0; margin:0}
+  section.candy-radio label input[type="submit"]{margin:15px 0;}
