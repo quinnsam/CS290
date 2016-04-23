@@ -28,7 +28,7 @@ var automobiles = [
 
 /*This function sorts arrays using an arbitrary comparator. You pass it a comparator and an array of objects appropriate for that comparator and it will return a new array which is sorted with the largest object in index 0 and the smallest in the last index*/
 function sortArr(comparator, array) {
-  var newArr = array.slice();
+  var newArr = array.slice(0); //Shallow copy of old array. Should look into implementing a deep copy prototype for future development.
   for (var i = 0; i < newArr.length - 1; i++) {
     for (var j = i + 1; j < newArr.length; j++) {
       if (comparator(newArr[j], newArr[i])) {
@@ -76,7 +76,7 @@ function typeComparator(auto1, auto2) {
   /*Function: orderType*/
   /*Parameters: automobile object*/
   /*Description: Returns a number based on the type of the automobile*/
-  var orderType = function(auto) {
+var orderType = function(auto) {
     switch (auto.type.toLowerCase()) {
       case "roadster":
         return 1;
@@ -94,6 +94,7 @@ function typeComparator(auto1, auto2) {
         return 5;
     }
   }
+
 
   if (orderType(auto1) < orderType(auto2)) {
     return true;
