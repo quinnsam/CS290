@@ -4,22 +4,22 @@ Your program should output the following to the console.log, including the openi
 
 Each line representing a car should be produced via a logMe function. This function should be added to the Automobile class and accept a single boolean argument. If the argument is 'true' then it prints "year make model type" with the year, make, model and type being the values appropriate for the automobile. If the argument is 'false' then the type is omitted and just the "year make model" is logged.
 
-*****
-The cars sorted by year are:
-(year make model of the 'greatest' car)
-(...)
-(year make model of the 'least' car)
+\*****  
+The cars sorted by year are:  
+(year make model of the 'greatest' car)  
+(...)  
+(year make model of the 'least' car)  
 
-The cars sorted by make are:
-(year make model of the 'greatest' car)
-(...)
-(year make model of the 'least' car)
+The cars sorted by make are:  
+(year make model of the 'greatest' car)  
+(...)  
+(year make model of the 'least' car)  
 
-The cars sorted by type are:
-(year make model type of the 'greatest' car)
-(...)
-(year make model type of the 'least' car)
-*****
+The cars sorted by type are:  
+(year make model type of the 'greatest' car)  
+(...)  
+(year make model type of the 'least' car)  
+\*****  
 
-As an example of the content in the parenthesis:
+As an example of the content in the parenthesis:  
 1990 Ford F-150
