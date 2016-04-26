@@ -1,15 +1,20 @@
 var newTable = document.createElement("table");
-var up = document.createElement("button")
-    down = document.createElement("button")
-    right = document.createElement("button")
-    left = document.createElement("button");
+var up = document.createElement("button");
+up.textContent = "Up";
 
+var down = document.createElement("button")
 down.textContent = "Down";
-down.id = "down";
 
+var right = document.createElement("button")
+right.textContent = "Right";
+
+var left = document.createElement("button");
+left.textContent = "Left";
 
 var mark = document.createElement("button");
+mark.textContent = "Mark";
 
+/*Function: Build Table*/
 function buildTable(newTable,length,height){
   var headRow = document.createElement("tr");
   for (var i = 0; i < length; i++){
@@ -34,25 +39,78 @@ function buildTable(newTable,length,height){
   }
   return newTable;
 }
-/*
-function moveCell(button,table,cell){
-  switch(button.id){
-    case "down":
-      if (cell.row < table.rows.length-1 && cell.row > 0){
-        cell.row += 1;
 
-      }
 
+function moveDown(table,cell){
+  if (cell.row < table.rows.length-1 && cell.row > 0){
+    table.children[cell.row].children[cell.col].style.border = "1px solid black";
+    cell.row += 1;
+    table.children[cell.row].children[cell.col].style.border = "5px solid black";
   }
-  return table;
 }
-*/
+
+down.addEventListener("click", function(){
+  moveDown(table,currentCell);
+})
+
+
+function moveUp(table, cell){
+  if (cell.row > 1){
+    table.children[cell.row].children[cell.col].style.border = "1px solid black";
+    cell.row -= 1;
+    table.children[cell.row].children[cell.col].style.border = "5px solid black";
+  }
+}
+
+up.addEventListener("click", function(){
+  moveUp(table,currentCell);
+})
+
+
+function moveLeft(table, cell){
+  if (cell.col > 0){
+    table.children[cell.row].children[cell.col].style.border = "1px solid black";
+    cell.col -= 1;
+    table.children[cell.row].children[cell.col].style.border = "5px solid black";
+  }
+}
+
+left.addEventListener("click", function(){
+  moveLeft(table,currentCell);
+})
+
+
+function moveRight(table, cell){
+  if (cell.col < table.rows[cell.row].cells.length-1){
+    table.children[cell.row].children[cell.col].style.border = "1px solid black";
+    cell.col += 1;
+    table.children[cell.row].children[cell.col].style.border = "5px solid black";
+  }
+}
+
+right.addEventListener("click", function(){
+  moveRight(table,currentCell);
+})
+
+
+function markCell(table, cell){
+  table.children[cell.row].children[cell.col].style.backgroundColor = "yellow";
+}
+
+mark.addEventListener("click", function(){
+  markCell(table,currentCell);
+})
 
 var table  = buildTable(newTable,4,4);
 table.style.borderCollapse = "collapse";
+table.style.borderSpacing = "0px";
 
 var currentCell = {col:0, row:1};
 table.children[currentCell.row].children[currentCell.col].style.border = "5px solid black";
 
 document.body.appendChild(table);
+document.body.appendChild(left);
+document.body.appendChild(up);
 document.body.appendChild(down);
+document.body.appendChild(right);
+document.body.appendChild(mark);
