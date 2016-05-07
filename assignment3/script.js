@@ -1,10 +1,4 @@
-var table = buildTable(4,4);
-table.style.borderCollapse = "collapse";
-table.style.borderSpacing = "0px";
-
-var currentCell = {col:0, row:1};
-table.children[currentCell.row].children[currentCell.col].style.border = "5px solid black";
-
+var newTable = document.createElement("table");
 var up = document.createElement("button");
 up.textContent = "Up";
 
@@ -21,8 +15,7 @@ var mark = document.createElement("button");
 mark.textContent = "Mark";
 
 /*Function: Build Table*/
-function buildTable(length,height){
-  var newTable = document.createElement("table");
+function buildTable(newTable,length,height){
   var headRow = document.createElement("tr");
   for (var i = 0; i < length; i++){
     var headCell = document.createElement("th");
@@ -108,6 +101,12 @@ mark.addEventListener("click", function(){
   markCell(table,currentCell);
 })
 
+var table  = buildTable(newTable,4,4);
+table.style.borderCollapse = "collapse";
+table.style.borderSpacing = "0px";
+
+var currentCell = {col:0, row:1};
+table.children[currentCell.row].children[currentCell.col].style.border = "5px solid black";
 
 document.body.appendChild(table);
 document.body.appendChild(left);
