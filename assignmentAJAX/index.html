@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="weather.js"></script>
+  <script src="binpost.js"></script>
+</head>
+<body>
+  <form>
+    <fieldset>
+      <legend>Get the Weather!</legend>
+
+      <label for="zipCode">Zip Code: </label>
+      <input type="text" name="zipCode" id="zipCode">
+
+      <label for="city">City: </label>
+      <input type="text" name="city" id="city">
+
+      <label for="country">Country: </label>
+      <input type="text" name="country" id="country" required>
+
+      <input type="submit" id="weatherSubmit">
+    </fieldset>
+  </form>
+
+  <div>
+    <h2>Current Weather</h2>
+    <ul>
+      <li><span>City: </span><span id="curCity"></span></li>
+      <li><span>Temperature: </span><span id="temperature"></span></li>
+      <li><span>Humidity: </span><span id="humidity"></span></li>
+    </ul>
+  </div>
+
+  <form>
+    <fieldset>
+      <legend>Click the button a POST to httpbin</legend>
+      <input type="submit" id="binPost">
+    </fieldset>
+  </form>
+  <br/>
+  <div>
+    <span>httpbin response:</span>
+    <br/>
+    <span id="binPostContent"></span>
+  </div>
+
+</body>
+</html>
