@@ -1,0 +1,9 @@
+<h1>{{contentType}} Request Receieved</h1>
+
+<div> Values sent via query string:
+<ul>
+  {{#each reqList}}
+    <li> {{this.name}}: {{this.value}}
+  {{/each}}
+</ul>
+</div>
