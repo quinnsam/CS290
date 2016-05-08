@@ -1,19 +1,22 @@
 var express = require('express');
 
 var app = express();
+var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 
-function getRandomIntInclusive(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
 app.set('port', 3000);
 
-app.use(function(req, res){
-  res.type('text/plain');
+function getRandomIntInclusive(min, max) {
+  var content = {}
+  content.number = Math.floor(Math.random() * (max - min + 1)) + min;
+  return content;
+}
+
+app.get('/', function(req, res){
   var randomNum = getRandomIntInclusive(0,100);
-  console.log('console log result: '+randomNum);
-  res.send('Your random number is ' + randomNum);
+  console.log(randomNum.number);
+  res.render('home', randomNum);
 })
 
 
