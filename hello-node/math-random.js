@@ -11,7 +11,9 @@ app.set('port', 3000);
 
 app.use(function(req, res){
   res.type('text/plain');
-  res.send(getRandomIntInclusive(0,100)); 
+  var randomNum = getRandomIntInclusive(0,100);
+  console.log('console log result: '+randomNum);
+  res.send('Your random number is ' + randomNum);
 })
 
 
