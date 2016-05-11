@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.set('port', 3000);
+app.set('port', 4000);
 /*-----------------------------------------------------------------*/
 
 app.get('/getpostchecker',function(req,res){
