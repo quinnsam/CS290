@@ -101,6 +101,10 @@ app.get('/safe-update', function(req,res,next){
         res.render('helloHome', context);
       });
     }
+    else{
+      context.results="No ID found";
+      res.render('helloHome', context);
+    }
   });
 });
 
