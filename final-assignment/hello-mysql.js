@@ -56,7 +56,7 @@ app.get('/', function(req,res,next){
 
 app.get('/insert', function(req,res,next){
   var context = {};
-  mysql.pool.query("INSERT INTO todo (`name`) VALUES (?)", [req.query.c], function(err,rows,fields){
+  mysql.pool.query("INSERT INTO todo (`name`) VALUES (?)", [req.query.c], function(err,result){
     if(err){
       next(err);
       return;
@@ -68,7 +68,7 @@ app.get('/insert', function(req,res,next){
 
 app.get('/delete', function(req,res,next){
   var context = {};
-  mysql.pool.query("DELETE FROM todo WHERE id=?", [req.query.id], function(err,rows,fields){
+  mysql.pool.query("DELETE FROM todo WHERE id=?", [req.query.id], function(err,result){
     if(err){
       next(err);
       return;
