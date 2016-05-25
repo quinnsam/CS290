@@ -53,17 +53,24 @@ app.post('/', function(req, res) {
     var context = {};
     console.log(req.body.name);
 
-    if(req.body.addItem){
-    //Function: user submits a new item via post.
-    mysql.pool.query('INSERT into workouts (`name`), (`reps`), (`weight`), (`date`), (`lbs`) VALUES (?), (?), (?), (?), (?)', [req.body.name, req.body.reps, req.body.weight, req.body.date, 1],
-        function(err, results) {
-            if (err) {
-                next(err);
-                return;
-            }
-            res.render('home', context);
-        });
-      }
+    if (req.body.addItem) {
+      var post = {
+        name:req.body.name,
+        reps:req.body.reps,
+        weight:req.body.weight,
+        date:req.body.date,
+        lbs:1
+      };
+        //Function: user submits a new item via post.
+        mysql.pool.query('INSERT INTO workouts SET ?', post,
+            function(err, results) {
+                if (err) {
+                    next(err);
+                    return;
+                }
+                res.render('home', context);
+            });
+    }
 });
 
 
