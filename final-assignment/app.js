@@ -51,7 +51,8 @@ app.get('/', function(req, res, next) {
 
 app.post('/', function(req, res) {
     var context = {};
-    mysql.pool.query('INSERT into workouts (`name`)', [req.body.name], function(err, results){
+    console.log(req.body.name);
+    mysql.pool.query('INSERT into workouts (`name`) VALUES (?)', [req.body.name], function(err, results){
       if (err){
         next(err);
         return;
