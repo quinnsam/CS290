@@ -49,9 +49,20 @@ app.get('/', function(req, res, next) {
     });
 });
 
+
+/*Function: app.post('/add'...) */
+/*Description: adds new row.    */
+/*Send AJAX query via POST with the a stringified JSON object.*/
+/*    payload = {
+      name: {string},
+      rep: {int},
+      weight: {int},
+      date: {date},
+      lbs: {boolean}
+    }
+*/
 app.post('/add', function(req, res) {
     var context = {};
-    console.log(req.body.name);
 
     //Create new row to be sent to database.
     var post = {
@@ -61,7 +72,7 @@ app.post('/add', function(req, res) {
         date: req.body.date,
         lbs: 1
     };
-    //Add new row to the database and send back details to update table..
+    //Add new row to the database and send back details to update table.
     mysql.pool.query('INSERT INTO workouts SET ?', post,
         function(err, results) {
             if (err) {
