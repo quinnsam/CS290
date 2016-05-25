@@ -78,7 +78,7 @@ app.get('/delete', function(req,res,next){
   });
 });
 
-app.get('safe-update', function(req,res,next){
+app.get('/safe-update', function(req,res,next){
   var context = {};
   /*SELECT the row to be updated from the id passed by the query.*/
   mysql.pool.query("SELECT * FROM todo WHERE id=?", [req.query.id], function(err, result){
