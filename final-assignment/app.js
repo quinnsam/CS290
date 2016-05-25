@@ -54,7 +54,7 @@ app.post('/', function(req, res) {
 
     //Function: user submits a new item via post.
     if (req.body.addItem) {
-        mysql.pool.query('INSERT into workouts (`name`), (`reps`), (`weight`), (`date`), (`lbs`)', [req.body.name || NULL, req.body.reps || 0, req.body.weight || 0, req.body.date, req.body.imperialFlag || 0],
+        mysql.pool.query('INSERT into workouts (`name`), (`reps`), (`weight`), (`date`), (`lbs`)', [req.body.name, req.body.reps, req.body.weight, req.body.date, req.body.imperialFlag],
             function(err, results) {
                 if (err) {
                     next(err);
