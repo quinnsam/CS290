@@ -78,6 +78,32 @@ app.get('/delete', function(req,res,next){
   });
 });
 
+app.get('safe-update', function(req,res,next){
+  var context = {};
+  /*SELECT the row to be updated from the id passed by the query.*/
+  mysql.pool.query("SELECT * FROM todo WHERE id=?", [req.query.id], function(err, result){
+    if (err){
+      next(err);
+      return;
+    }
+
+    //If the id matches a row, then update it.
+    if(result.length == 1){
+      var curVals = result[0];
+      mysql.pool.query("UPDATE todo SET name=?, done=?, due=? WHERE id=?",
+      [req.query.name || curVals.name, req.query.done || curVals.done, req.query.due || curVals.due, req.query.id],
+      function(err, result){
+        if (err){
+          next(err);
+          return;
+        }
+        context.results = "Updated " + result.changedRows + " rows.";
+        res.render('helloHome', context);
+      });
+    }
+  });
+});
+
 app.use(function(req, res) {
     res.status(404);
     res.render('404');
