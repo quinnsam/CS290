@@ -16,11 +16,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-var session = require('express-session');
-app.use(session({
-    secret: 'SuperSecretPassword'
-}));
-
 var request = require('request');
 
 app.use(express.static('public'));
@@ -38,7 +33,7 @@ app.get('/reset-table',function(req,res,next){
     mysql.pool.query(createString, function(err){
       context.results = "Table reset";
       res.render('helloHome',context);
-    })
+    });
   });
 });
 
