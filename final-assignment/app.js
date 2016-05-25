@@ -52,28 +52,20 @@ app.get('/', function(req, res, next) {
 app.post('/', function(req, res) {
     var context = {};
     console.log(req.body.name);
-    mysql.pool.query('INSERT into workouts (`name`) VALUES (?)', [req.body.name], function(err, results){
-      if (err){
-        next(err);
-        return;
-      }
-      res.render('home', context);
-    });
-  });
 
-
+    if(req.body.addItem){
     //Function: user submits a new item via post.
-    /*mysql.pool.query('INSERT into workouts (`name`), (`reps`), (`weight`), (`date`), (`lbs`)', [req.body.name, req.body.reps, req.body.weight, req.body.date, 1],
+    mysql.pool.query('INSERT into workouts (`name`), (`reps`), (`weight`), (`date`), (`lbs`) VALUES (?), (?), (?), (?), (?)', [req.body.name, req.body.reps, req.body.weight, req.body.date, 1],
         function(err, results) {
             if (err) {
                 next(err);
                 return;
             }
-            context.results = JSON.stringify(rows);
             res.render('home', context);
         });
+      }
 });
-*/
+
 
 
 app.use(function(req, res) {
