@@ -27,6 +27,21 @@ app.use(express.static('public'));
 
 /*-----------------------------------------------------------------*/
 
+app.get('/reset-table',function(req,res,next){
+  var context = {};
+  mysql.pool.query("DROP TABLE IF EXISTS todo", function(err){
+    var createString = "CREATE TABLE todo(" +
+    "id INT PRIMARY KEY AUTO_INCREMENT," +
+    "name VARCHAR(255) NOT NULL," +
+    "done BOOLEAN," +
+    "due DATE)";
+    mysql.pool.query(createString, function(err){
+      context.results = "Table reset";
+      res.render('helloHome',context);
+    })
+  });
+});
+
 app.get('/', function(req,res,next){
   var context = {};
   mysql.pool.query('SELECT * FROM todo', function(err, rows, fields){
@@ -59,7 +74,7 @@ app.get('/delete', function(req,res,next){
       return;
     }
     context.results = "Deleted" + result.changedRows + " rows.";
-    res.render('HelloHome', context);
+    res.render('helloHome', context);
   });
 });
 
