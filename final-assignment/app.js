@@ -45,40 +45,41 @@ app.get('/', function(req, res, next) {
             return;
         }
         context.results = JSON.stringify(rows);
-        res.render('home', context);
+        res.send(context.results);
+        res.render('home');
     });
 });
 
-app.post('/', function(req, res) {
+app.post('/add', function(req, res) {
     var context = {};
+    console.log(req);
+    req = JSON.parse(req);
     console.log(req.body.name);
 
-    if (req.body.add) {
-
-        var post = {
-            name: req.body.name,
-            reps: req.body.reps,
-            weight: req.body.weight,
-            date: req.body.date,
-            lbs: 1
-        };
-        //Function: user submits a new item via post.
-        mysql.pool.query('INSERT INTO workouts SET ?', post,
-            function(err, results) {
+    //Create new row to be sent to database.
+    var post = {
+        name: req.body.name,
+        reps: req.body.reps,
+        weight: req.body.weight,
+        date: req.body.date,
+        lbs: 1
+    };
+    //Add new row to the database and send back details to update table..
+    mysql.pool.query('INSERT INTO workouts SET ?', post,
+        function(err, results) {
+            if (err) {
+                next(err);
+                return;
+            }
+            mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields) {
                 if (err) {
                     next(err);
                     return;
                 }
-                mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields) {
-                    if (err) {
-                        next(err);
-                        return;
-                    }
-                    context.results = JSON.stringify(rows);
-                    res.render('home', context);
-                });
+                context.results = JSON.stringify(rows);
+                res.send(context.results);
             });
-    }
+        });
 });
 
 
