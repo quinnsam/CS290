@@ -45,7 +45,7 @@ app.get('/', function(req, res, next) {
             return;
         }
         context.results = JSON.stringify(rows);
-        res.render('home');
+        res.send(context.results);
     });
 });
 
