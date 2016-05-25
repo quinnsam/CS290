@@ -37,16 +37,16 @@ app.get('/reset-table', function(req, res, next) {
     });
 });
 
-app.get('/', function(req,res,next){
-  var context = {};
-  mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
-    if(err){
-      next(err);
-      return;
-    }
-    context.results = JSON.stringify(rows);
-    res.render('home', context);
-  });
+app.get('/', function(req, res, next) {
+    var context = {};
+    mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields) {
+        if (err) {
+            next(err);
+            return;
+        }
+        context.results = JSON.stringify(rows);
+        res.render('home', context);
+    });
 });
 
 app.post('/', function(req, res) {
@@ -60,15 +60,8 @@ app.post('/', function(req, res) {
                     next(err);
                     return;
                 }
-
-                mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields) {
-                    if (err) {
-                        next(err);
-                        return;
-                    }
-                    context.results = JSON.stringify(rows);
-                    res.render('home', context);
-                });
+                context.results = JSON.stringify(rows);
+                res.render('home', context);
             });
     }
 });
