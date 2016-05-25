@@ -51,8 +51,6 @@ app.get('/', function(req, res, next) {
 
 app.post('/add', function(req, res) {
     var context = {};
-    console.log(req);
-    req = JSON.parse(req);
     console.log(req.body.name);
 
     //Create new row to be sent to database.
