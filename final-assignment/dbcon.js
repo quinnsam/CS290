@@ -7,4 +7,4 @@ var pool = mysql.createPool({
   database:'student'
 });
 
-modules.exports.pool = pool;
+module.exports.pool = pool;
