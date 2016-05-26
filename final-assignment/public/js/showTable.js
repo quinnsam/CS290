@@ -46,7 +46,7 @@ function buildTable(data) {
         }
 
         var newForm = document.createElement("form");
-
+/*
         var delButton = document.createElement("button");
         delButton.textContent = "Delete";
         delButton.className = "delete";
@@ -81,13 +81,13 @@ function buildTable(data) {
             event.preventDefault();
         });
         newForm.appendChild(delButton);
-
+*/
         var updateButton = document.createElement("button");
         updateButton.textContent = "Update";
         updateButton.className = "update";
-        updateButton.onclick= function(){
+        updateButton.onclick = function(){
           var rowId = delButton.parentNode.lastChild.value;
-          window.location.href = 'http://52.37.202.83:3000/updateForm?id='+rowId;
+          window.location.href = "http://52.37.202.83:3000/updateForm";
         };
         newForm.appendChild(updateButton);
 
