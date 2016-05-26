@@ -14,7 +14,7 @@
   <input id="exDate" type="date" name="date" value={{results.[0].date}}>
 
   <label for="unitCheckBox">lbs? (Leave unchecked for kg)</label>
-  <input id="unitCheckBox" type="checkbox" name="bool" value="{{results.[0].lbs}}">
+  <input id="unitCheckBox" type="checkbox" name="bool" value="{{results.[0].lbs}}" {{checked}}>
   <br/>
 
   <input type="hidden" name="id" value={{results.[0].id}}>

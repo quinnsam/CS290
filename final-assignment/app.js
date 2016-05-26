@@ -130,17 +130,22 @@ app.post('/delete', function(req, res) {
 });
 
 
-app.get('/updateForm', function(req,res,next){
-  var context = {};
-  mysql.pool.query('SELECT * FROM workouts WHERE id=?',[req.query.id], function(err,rows, fields){
-    if (err) {
-      next(err);
-      return;
-    }
-    context.results = rows;
-    console.log("Current update object: " + context.results);
-    res.render('updateForm', context);
-  });
+app.get('/updateForm', function(req, res, next) {
+    var context = {};
+    mysql.pool.query('SELECT * FROM workouts WHERE id=?', [req.query.id], function(err, rows, fields) {
+        if (err) {
+            next(err);
+            return;
+        }
+        context.results = rows;
+
+        //Check the box if lbs boolean is true.
+        if (context.results[0].lbs === 1) {
+            context.checked = "checked";
+        }
+        console.log("Current update object: " + JSON.stringify(context.results));
+        res.render('updateForm', context);
+    });
 });
 
 /*Route handler for updating a row from the database*/
