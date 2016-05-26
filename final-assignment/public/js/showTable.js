@@ -68,7 +68,8 @@ function buildTable(data) {
                             var curTable = document.getElementById("workouts");
                             curTable.parentNode.replaceChild(buildTable(response), curTable);
                         } else {
-                            document.body.appendChild(buildTable(response));
+                            var tempTable = document.getElementById("workouts");
+                            tempTable.parentNode.removeChild(tempTable);
                         }
                     }
                 } else {
