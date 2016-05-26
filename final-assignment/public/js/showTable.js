@@ -45,7 +45,7 @@ function buildTable(data) {
             row.appendChild(cell);
         }
 
-        var deleteForm = document.createElement("form");
+        var newForm = document.createElement("form");
 
         var delButton = document.createElement("button");
         delButton.textContent = "Delete";
@@ -80,19 +80,19 @@ function buildTable(data) {
             req.send(JSON.stringify(payload)); //send JSON string-formatted object
             event.preventDefault();
         });
-        deleteForm.appendChild(delButton);
-        row.appendChild(deleteForm);
+        newForm.appendChild(delButton);
 
-        var updateForm = document.createElement("form");
         var updateButton = document.createElement("button");
         updateButton.textContent = "Update";
         updateButton.className = "update";
         updateButton.onclick = function(){
-          location.href = "http://52.37.202.83:3000/updateForm";
+          var rowId = updateButton.parentNode.parentNode.lastChild.value;
+          location.href = "http://52.37.202.83:3000/updateForm?id="+updateIndex;
           event.preventDefault();
         };
-        updateForm.appendChild(updateButton);
-        row.appendChild(updateForm);
+        newForm.appendChild(updateButton);
+
+        row.appendChild(newForm);
 
         //IMPORTANT - Store this id at the the end of the row.
         //It will be accessed using lastChild when deleting and updating.
