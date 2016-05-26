@@ -49,6 +49,18 @@ app.get('/', function(req, res, next) {
     });
 });
 
+app.get('/updateForm', function(req,res,next){
+  var context = {};
+  mysql.pool.query('SELECT * FROM workouts WHERE id=?',[req.query.id], function(err,rows, fields){
+    if (err) {
+      next(err);
+      return;
+    }
+    context.results = JSON.stringify(rows);
+    res.render('updateForm', context);
+  });
+});
+
 
 /*Route handler for GET requests for the workouts table*/
 /*Default behavior of GET, returns the workouts table as a JSON string*/
