@@ -1,39 +1,43 @@
 document.addEventListener('DOMContentLoaded', deleteRow);
 
 function deleteRow() {
-    document.getElementsByClassName("delete").addEventListener('click', function(event) {
-        var req = new XMLHttpRequest();
+    var deleteButtons = document.getElementsByClassName("delete");
+    console.log(deleteButtons);
+    deleteButtons.forEach(delButton, function(delButton){
+      delButton.addEventListener('click', function(event) {
+          var req = new XMLHttpRequest();
 
-        //The hidden attribute rowId is stored in the lastchild of the row.
-        var rowId = document.getElementsByClassName("delete").parentNode.lastChild.name;
-        console.log(rowId);
-        //Create payload for POST query.
-        var payload = {
-            id: rowId
-        };
+          //The hidden attribute rowId is stored in the lastchild of the row.
+          var rowId = delButton.parentNode.lastChild.name;
+          console.log(rowId);
+          //Create payload for POST query.
+          var payload = {
+              id: rowId
+          };
 
-        req.open('DELETE', 'http://52.37.202.83:3000/delete');
-        req.setRequestHeader('Content-Type', 'application/json');
-        req.addEventListener('load', function() {
-            if (req.status >= 200 && req.status < 400) {
-                var response = JSON.parse(req.responseText);
+          req.open('DELETE', 'http://52.37.202.83:3000/delete');
+          req.setRequestHeader('Content-Type', 'application/json');
+          req.addEventListener('load', function() {
+              if (req.status >= 200 && req.status < 400) {
+                  var response = JSON.parse(req.responseText);
 
-                //If we have a response from the request, build a table.
-                if (response.length) {
-                    if (document.getElementById("workouts")) {
-                        var curTable = document.getElementById("workouts");
-                        curTable.parentNode.replaceChild(buildTable(response), curTable);
-                    } else {
-                        document.body.appendChild(buildTable(response));
-                    }
-                }
-            } else {
-                console.log("Error in network request: " + req.statusText);
-            }
-        });
-        req.send(JSON.stringify(payload)); //send JSON string-formatted object
-        event.preventDefault();
-    });
+                  //If we have a response from the request, build a table.
+                  if (response.length) {
+                      if (document.getElementById("workouts")) {
+                          var curTable = document.getElementById("workouts");
+                          curTable.parentNode.replaceChild(buildTable(response), curTable);
+                      } else {
+                          document.body.appendChild(buildTable(response));
+                      }
+                  }
+              } else {
+                  console.log("Error in network request: " + req.statusText);
+              }
+          });
+          req.send(JSON.stringify(payload)); //send JSON string-formatted object
+          event.preventDefault();
+      });
+  });
 }
 
 function buildTable(data) {
