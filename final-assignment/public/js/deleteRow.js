@@ -5,7 +5,7 @@ function deleteRow() {
         var req = new XMLHttpRequest();
 
         //The hidden attribute rowId is stored in the lastchild of the row.
-        var rowId = document.getElementByClassName("delete").parentNode.lastChild.name;
+        var rowId = document.getElementsByClassName("delete").parentNode.lastChild.name;
         console.log(rowId);
         //Create payload for POST query.
         var payload = {
