@@ -20,6 +20,9 @@ req.addEventListener('load', function() {
 });
 req.send(null); //send JSON string-formatted object
 
+/*Build Table Function*/
+/*Used to construct a HTML table from the response from the server.*/
+/*Includes functionality for update and delete buttons in each row*/
 function buildTable(data) {
     var newTable = document.createElement("table");
     newTable.id = "workouts";
@@ -47,12 +50,15 @@ function buildTable(data) {
         var delButton = document.createElement("button");
         delButton.textContent = "Delete";
         delButton.className = "delete";
+
+        //Add delete button behavior on click
         delButton.addEventListener('click', function(event) {
             var req = new XMLHttpRequest();
 
             //The hidden attribute rowId is stored in the lastchild of the row.
             var rowId = delButton.parentNode.lastChild.value;
             console.log("Client-side passed ID: " + rowId);
+
             //Create payload for POST query.
             var payload = {
                 id: rowId
@@ -62,9 +68,11 @@ function buildTable(data) {
             req.setRequestHeader('Content-Type', 'application/json');
             req.addEventListener('load', function() {
                 if (req.status >= 200 && req.status < 400) {
+
+                    //If query was successful, delete the current row.
                     var curTable = document.getElementById("workouts");
-                    var curRowIdx = delButton.parentNode.parentNode.rowIndex;
-                    curTable.deleteRow(curRowIdx);
+                    var curRowIdx = delButton.parentNode.parentNode.rowIndex; //rowIndex returns index of a row Object
+                    curTable.deleteRow(curRowIdx); //{table element}.deleteRow(rowIndex) deletes the specified row in the table
                 } else {
                     console.log("Error in network request: " + req.statusText);
                 }
@@ -77,6 +85,23 @@ function buildTable(data) {
         var updateButton = document.createElement("button");
         updateButton.textContent = "Update";
         updateButton.className = "update";
+        updateButton.addEventListener('click', function(event) {
+            var req = new XMLHttpRequest();
+
+            //The hidden attribute rowId is stored in the lastchild of the row.
+            var rowId = updateButton.parentNode.lastChild.value;
+            console.log("Client-side passed ID: " + rowId);
+
+            //Create payload for POST query.
+            var payload = {
+                id: rowId
+            };
+
+            req.open('POST', 'http://52.37.202.83:3000/update');
+            req.setRequestHeader('Content-Type', 'application/json');
+            req.send(JSON.stringify(payload)); //send JSON string-formatted object
+            event.preventDefault();
+        });
         newForm.appendChild(updateButton);
 
 

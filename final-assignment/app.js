@@ -128,6 +128,26 @@ app.post('/delete', function(req, res){
   });
 });
 
+
+/*Route handler for updating a row from the database*/
+/*Pass to it the id containing the row to be updated.*/
+/*Renders the update page and passes it the object matching the id.*/
+app.post('/update', function(req, res){
+  var context = {};
+  console.log("Server-side delete id: " + req.body.id);
+  mysql.pool.query("SELECT FROM workouts WHERE id=?", [req.body.id], function(err, rows, fields){
+    if (err){
+      next(err);
+      return;
+    }
+      console.log(rows);
+      context.results = JSON.stringify(rows);
+      res.render('update-form', context);
+    });
+  });
+});
+
+
 app.use(function(req, res) {
     res.status(404);
     res.render('404');
