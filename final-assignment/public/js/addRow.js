@@ -2,7 +2,14 @@ document.addEventListener('DOMContentLoaded', addExButton);
 
 function addExButton() {
     document.getElementById("add").addEventListener('click', function(event) {
+
+        if (!document.getElementById("exName").value){
+          alert("You must enter a name!");
+          return;
+        }
+
         var req = new XMLHttpRequest();
+
 
         //Check if units boxed was checked for metric or imperial.
         var checked = 0;
