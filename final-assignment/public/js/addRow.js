@@ -25,7 +25,7 @@ function addExButton() {
             if (req.status >= 200 && req.status < 400) {
                 var response = JSON.parse(req.responseText);
 
-                  /*Insert function to build table here*/
+                document.body.appendChild(buildTable(response));
 
                 document.getElementById("testResponse").textContent = JSON.stringify(response);
             } else {
@@ -35,4 +35,38 @@ function addExButton() {
         req.send(JSON.stringify(payload)); //send JSON string-formatted object
         event.preventDefault();
     });
+}
+
+function buildTable(data) {
+    var newTable = document.createElement("table");
+
+    var fields = Object.keys(data[0]);
+    var headRow = document.createElement("tr");
+    for (var i = 1; i < fields.length; i++) {
+        var headCell = document.createElement("th");
+        headCell.textContent = fields[i];
+        headRow.appendChild(headCell);
+    }
+    newTable.appendChild(headRow);
+
+    data.forEach(function(object) {
+        var row = document.createElement("tr");
+
+        for (var i = 1; i < fields.length; i++) {
+            var cell = document.createElement("td");
+            cell.textContent = object[fields[i]];
+            row.appendChild(cell);
+        }
+
+        var delButton = document.createElement("button");
+        delButton.textContent = "Delete";
+        row.appendChild(delButton);
+
+        var updateButton = document.createElement("button");
+        updateButton.textContent = "Update";
+        row.appendChild(updateButton);
+
+        newTable.appendChild(row);
+    });
+    return newTable;
 }
