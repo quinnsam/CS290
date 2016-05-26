@@ -62,15 +62,13 @@ function buildTable(data) {
                 if (req.status >= 200 && req.status < 400) {
                     var response = JSON.parse(req.responseText);
 
-                    //If we have a response from the request, build a table.
+                    //If we have a response from the request, delete the row.
                     if (response.length) {
                         if (document.getElementById("workouts")) {
                             var curTable = document.getElementById("workouts");
-                            curTable.parentNode.replaceChild(buildTable(response), curTable);
-                        } else {
-                            var tempTable = document.getElementById("workouts");
-                            tempTable.parentNode.removeChild(tempTable);
-                        }
+                            var rowCount = curTable.rows.length;
+                            curTable.deleteRow(rowCount-1);
+                          } 
                     }
                 } else {
                     console.log("Error in network request: " + req.statusText);
