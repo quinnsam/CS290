@@ -158,7 +158,7 @@ app.post('/updateForm', function(req, res, next) {
         if (result.length == 1) {
             var curVals = result[0];
             console.log("req.body with POST: " + JSON.stringify(req.body));
-            mysql.pool.query('UPDATE workouts SET name=?, reps=?, weight=?, date=?, lbs=? WHERE id=?', [req.body.name || curVals.name, req.body.reps || curVals.reps, req.body.weight || curVals.weight, req.body.date || curVals.date, req.body.lbs || curVals.lbs, req.body.id],
+            mysql.pool.query('UPDATE workouts SET name=?, reps=?, weight=?, date=?, lbs=? WHERE id=?', [req.body.name || curVals.name, req.body.reps || curVals.reps, req.body.weight || curVals.weight, req.body.date || curVals.date, req.body.lbs, req.body.id],
                 function(err, result) {
                     if (err) {
                         next(err);
