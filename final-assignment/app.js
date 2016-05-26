@@ -60,7 +60,7 @@ app.get('/get', function(req, res) {
             next(err);
             return;
         }
-        context.results = JSON.stringify(rows);
+        context.results = rows;
         res.send(context.results);
     });
 });
