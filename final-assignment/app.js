@@ -137,7 +137,7 @@ app.get('/updateForm', function(req,res,next){
       next(err);
       return;
     }
-    context.results = JSON.stringify(rows);
+    context.results = rows;
     console.log("Current update object: " + context.results);
     res.render('updateForm', context);
   });
@@ -146,7 +146,7 @@ app.get('/updateForm', function(req,res,next){
 /*Route handler for updating a row from the database*/
 /*Pass to it the id containing the row to be updated.*/
 /*Renders the update page and passes it the object matching the id.*/
-app.post('/update', function(req, res) {
+/*app.post('/update', function(req, res) {
     var context = {};
     console.log("Server-side update id: " + req.body.id);
     mysql.pool.query('SELECT * FROM workouts WHERE id=?', [req.body.id], function(err, rows, fields) {
@@ -159,7 +159,7 @@ app.post('/update', function(req, res) {
         res.redirect('updateForm', context);
     });
 });
-
+*/
 
 app.use(function(req, res) {
     res.status(404);
