@@ -25,7 +25,12 @@ function addExButton() {
             if (req.status >= 200 && req.status < 400) {
                 var response = JSON.parse(req.responseText);
                 console.log(response);
-                document.getElementById("workouts").appendChild(addRow(response));
+                if (document.getElementById("workouts")) {
+                    var curTable = document.getElementById("workouts");
+                    curTable.parentNode.replaceChild(buildTable(response), curTable);
+                } else {
+                  document.body.appendChild(buildTable(response));
+                }
                 document.getElementById("testResponse").textContent = JSON.stringify(response);
             } else {
                 console.log("Error in network request: " + req.statusText);
@@ -36,7 +41,7 @@ function addExButton() {
     });
 }
 
-function addRow(data) {
+/*function addRow(data) {
 
     var row = document.createElement("tr");
     var fields = Object.keys(data[0]);
@@ -56,4 +61,39 @@ function addRow(data) {
     updateButton.textContent = "Update";
     row.appendChild(updateButton);
     return row;
+}
+*/
+function buildTable(data) {
+    var newTable = document.createElement("table");
+    newTable.id="workouts";
+
+    var fields = Object.keys(data[0]);
+    var headRow = document.createElement("tr");
+    for (var i = 1; i < fields.length; i++) {
+        var headCell = document.createElement("th");
+        headCell.textContent = fields[i];
+        headRow.appendChild(headCell);
+    }
+    newTable.appendChild(headRow);
+
+    data.forEach(function(object) {
+        var row = document.createElement("tr");
+
+        for (var i = 1; i < fields.length; i++) {
+            var cell = document.createElement("td");
+            cell.textContent = object[fields[i]];
+            row.appendChild(cell);
+        }
+
+        var delButton = document.createElement("button");
+        delButton.textContent = "Delete";
+        row.appendChild(delButton);
+
+        var updateButton = document.createElement("button");
+        updateButton.textContent = "Update";
+        row.appendChild(updateButton);
+
+        newTable.appendChild(row);
+    });
+    return newTable;
 }
