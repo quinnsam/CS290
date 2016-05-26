@@ -48,7 +48,10 @@ function buildTable(data) {
         updateButton.className = "update";
         row.appendChild(updateButton);
 
+        //IMPORTANT - Store this id at the the end of the row.
+        //It will be accessed using lastChild when deleting and updating.
         var hiddenId = document.createElement("input");
+        hiddenId.name = "id"+object.id;
         hiddenId.type = "hidden";
         hiddenId.value = object.id;
         row.appendChild(hiddenId);

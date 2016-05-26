@@ -1,25 +1,18 @@
-document.addEventListener('DOMContentLoaded', addExButton);
+document.addEventListener('DOMContentLoaded', deleteRow);
 
-function addExButton() {
-    document.getElementById("add").addEventListener('click', function(event) {
+function deleteRow() {
+    document.getElementByClassName("delete").addEventListener('click', function(event) {
         var req = new XMLHttpRequest();
 
-        //Check if units boxed was checked for metric or imperial.
-        var checked = 0;
-        if (document.getElementById("unitCheckBox").checked) {
-            checked = 1;
-        }
-
+        //The hidden attribute rowId is stored in the lastchild of the row.
+        var rowId = document.getElementByClassName("delete").parentNode.lastChild.name;
+        console.log(rowId);
         //Create payload for POST query.
         var payload = {
-            name: document.getElementById("exName").value,
-            reps: document.getElementById("exReps").value,
-            weight: document.getElementById("exWeight").value,
-            date: document.getElementById("exDate").value,
-            lbs: checked
+            id: rowId
         };
 
-        req.open('POST', 'http://52.37.202.83:3000/add');
+        req.open('DELETE', 'http://52.37.202.83:3000/delete');
         req.setRequestHeader('Content-Type', 'application/json');
         req.addEventListener('load', function() {
             if (req.status >= 200 && req.status < 400) {
