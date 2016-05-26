@@ -40,11 +40,11 @@ function buildTable(data) {
         }
 
         var delButton = document.createElement("button");
-        delButton.textContent = Delete;
+        delButton.textContent = "Delete";
         row.appendChild(delButton);
 
         var updateButton = document.createElement("button");
-        updateButton.textContent = Update;
+        updateButton.textContent = "Update";
         row.appendChild(updateButton);
 
         newTable.appendChild(row);
