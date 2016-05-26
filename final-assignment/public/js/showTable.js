@@ -45,8 +45,8 @@ function buildTable(data) {
             row.appendChild(cell);
         }
 
-        var newForm = document.createElement("form");
-/*
+        var deleteForm = document.createElement("form");
+
         var delButton = document.createElement("button");
         delButton.textContent = "Delete";
         delButton.className = "delete";
@@ -80,16 +80,18 @@ function buildTable(data) {
             req.send(JSON.stringify(payload)); //send JSON string-formatted object
             event.preventDefault();
         });
-        newForm.appendChild(delButton);
-*/
+        deleteForm.appendChild(delButton);
+        row.appendChild(deleteForm);
+
+        var updateForm = document.createElement("form");
         var updateButton = document.createElement("button");
         updateButton.textContent = "Update";
         updateButton.className = "update";
         updateButton.onclick = function(){
           location.href = "http://52.37.202.83:3000/updateForm";
         };
-        newForm.appendChild(updateButton);
-
+        updateForm.appendChild(updateButton);
+        row.appendChild(updateForm);
 
         //IMPORTANT - Store this id at the the end of the row.
         //It will be accessed using lastChild when deleting and updating.
@@ -97,9 +99,7 @@ function buildTable(data) {
         hiddenId.name = "id" + object.id;
         hiddenId.type = "hidden";
         hiddenId.value = object.id;
-        newForm.appendChild(hiddenId);
-
-        row.appendChild(newForm);
+        row.appendChild(hiddenId);
 
         newTable.appendChild(row);
     });
