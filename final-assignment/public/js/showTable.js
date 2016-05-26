@@ -15,6 +15,8 @@ req.addEventListener('load', function() {
 });
 req.send(null); //send JSON string-formatted object
 
+var deleteButtons = document.getElementsByClassName("delete");
+console.log(deleteButtons);
 
 function buildTable(data) {
     var newTable = document.createElement("table");
