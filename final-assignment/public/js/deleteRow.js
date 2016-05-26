@@ -8,7 +8,7 @@ function deleteRow() {
           var req = new XMLHttpRequest();
 
           //The hidden attribute rowId is stored in the lastchild of the row.
-          var rowId = delButton.parentNode.lastChild.name;
+          var rowId = delButton.parentNode.lastChild.value;
           console.log(rowId);
           //Create payload for POST query.
           var payload = {
