@@ -142,7 +142,7 @@ app.post('/update', function(req, res) {
         }
         console.log(rows);
         context.results = JSON.stringify(rows);
-        res.render('updateForm',context);
+        res.redirect('updateForm',context);
     });
 });
 
