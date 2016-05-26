@@ -34,8 +34,7 @@ function buildTable(data) {
 
         for (var i = 1; i < fields.length; i++) {
             var cell = document.createElement("td");
-            cell.textContent = object[fields];
-            console.log(object[fields]);
+            cell.textContent = object[fields[i]];
             row.appendChild(cell);
         }
 
