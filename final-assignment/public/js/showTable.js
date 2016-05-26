@@ -56,7 +56,7 @@ function buildTable(data) {
             var req = new XMLHttpRequest();
 
             //The hidden attribute rowId is stored in the lastchild of the row.
-            var rowId = delButton.parentNode.lastChild.value;
+            var rowId = delButton.parentNode.parentNode.lastChild.value;
             console.log("Client-side passed ID: " + rowId);
 
             //Create payload for POST query.
