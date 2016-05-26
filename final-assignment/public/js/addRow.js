@@ -6,7 +6,6 @@ function addExButton() {
 
         //Check if units boxed was checked for metric or imperial.
         var checked = 0;
-        console.log(document.getElementById("unitCheckBox").checked);
         if (document.getElementById("unitCheckBox").checked) {
             checked = 1;
         }

@@ -49,6 +49,9 @@ app.get('/', function(req, res, next) {
     });
 });
 
+
+/*Route handler for GET requests for the workouts table*/
+/*Default behavior of GET, returns the workouts table as a JSON string*/
 app.get('/get', function(req, res) {
     var context = {};
     mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields) {
@@ -62,9 +65,9 @@ app.get('/get', function(req, res) {
 });
 
 
-/*Function: app.post('/add'...) */
-/*Description: adds new row.    */
-/*Send AJAX query via POST with the a stringified JSON object.*/
+/*Function: Route handler for adding an exercise to the database*/
+/*Description: adds new row when a POST query is received from the client*/
+/*Send a JSON object string in the format: */
 /*    payload = {
       name: {string},
       rep: {int},
@@ -103,7 +106,24 @@ app.post('/add', function(req, res) {
         });
 });
 
-
+/*Route handler for deleting a row from the database*/
+/*Pass to it the id containing the row to be deleted.*/
+/*Returns the workouts table after deleting the row.*/
+app.delete('/delete', function(req, res){
+  var context = {};
+  mysql.pool.query("DELETE FROM workouts WHERE id=?", [req.query.id], function(err, result){
+    if (err){
+      next(err);
+      return;
+    }
+    mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+      if(err){
+        next(err);
+        return;
+      }
+    });
+  });
+});
 
 app.use(function(req, res) {
     res.status(404);
