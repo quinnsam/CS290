@@ -5,8 +5,8 @@ req.setRequestHeader('Content-Type', 'application/json');
 req.addEventListener('load', function() {
     if (req.status >= 200 && req.status < 400) {
         var response = JSON.parse(req.responseText);
+        document.body.appendChild(buildTable(response));
 
-          /*Insert function to build table here*/
 
         document.getElementById("testResponse").textContent = JSON.stringify(response);
     } else {
@@ -14,3 +14,36 @@ req.addEventListener('load', function() {
     }
 });
 req.send(null); //send JSON string-formatted object
+
+
+function buildTable(data) {
+    var newTable = document.createElement("table");
+
+    var fields = Object.keys(data[0]);
+    var headRow = document.createElement("tr");
+    for (var i = 1; i < fields.length; i++) {
+        var headCell = document.createElement("th");
+        headCell.textContent = fields[i];
+        headRow.appendChild(headCell);
+    }
+    table.appendChild(headRow);
+
+    data.forEach(function(object) {
+        var row = document.createElement("tr");
+
+        for (var i = 1; i < fields.length; i++) {
+            var cell = document.createElement("td");
+            cell.textContent = object[field];
+            row.appendChild(cell);
+        }
+
+        var delButton = document.createElement("button");
+        row.appendChild(delButton);
+
+        var updateButton = document.createElement("button");
+        row.appendChild(updateButton);
+
+        table.appendChild(row);
+    });
+    return table;
+}
