@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', deleteRow);
 
 function deleteRow() {
-    var deleteButtons = document.getElementsByClassName("delete");
+    var deleteButtons = Array.from(document.getElementsByClassName("delete"));
     console.log(deleteButtons);
     deleteButtons.forEach(function(delButton){
       delButton.addEventListener('click', function(event) {
