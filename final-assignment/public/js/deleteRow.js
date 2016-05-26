@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', deleteRow);
 function deleteRow() {
     var deleteButtons = document.getElementsByClassName("delete");
     console.log(deleteButtons);
-    deleteButtons.forEach(delButton, function(delButton){
+    deleteButtons.forEach(function(delButton){
       delButton.addEventListener('click', function(event) {
           var req = new XMLHttpRequest();
 
