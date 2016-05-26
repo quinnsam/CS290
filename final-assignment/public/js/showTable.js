@@ -26,7 +26,7 @@ function buildTable(data) {
         headCell.textContent = fields[i];
         headRow.appendChild(headCell);
     }
-    table.appendChild(headRow);
+    newTable.appendChild(headRow);
 
     data.forEach(function(object) {
         var row = document.createElement("tr");
@@ -43,7 +43,7 @@ function buildTable(data) {
         var updateButton = document.createElement("button");
         row.appendChild(updateButton);
 
-        table.appendChild(row);
+        newTable.appendChild(row);
     });
-    return table;
+    return newTable;
 }
