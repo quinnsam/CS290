@@ -60,7 +60,7 @@ app.get('/get', function(req, res) {
             next(err);
             return;
         }
-        context.results = rows;
+        context.results = JSON.stringify(rows);
         res.send(context.results);
     });
 });
@@ -155,7 +155,7 @@ app.post('/update', function(req, res) {
             return;
         }
         console.log(rows);
-        context.results = JSON.stringify(rows);
+        context.results = rows;
         res.redirect('updateForm', context);
     });
 });
