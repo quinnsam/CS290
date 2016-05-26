@@ -85,7 +85,7 @@ app.post('/add', function(req, res) {
         lbs: 1
     };
 
-    console.log(post[date]);
+    console.log(post.date);
     //Add new row to the database and send back details to update table.
     mysql.pool.query('INSERT INTO workouts SET ?', post,
         function(err, results) {
