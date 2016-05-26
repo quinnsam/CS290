@@ -9,13 +9,13 @@ function deleteRow() {
 
           //The hidden attribute rowId is stored in the lastchild of the row.
           var rowId = delButton.parentNode.lastChild.value;
-          console.log(rowId);
+          console.log("Client-side passed ID: "+rowId);
           //Create payload for POST query.
           var payload = {
               id: rowId
           };
 
-          req.open('DELETE', 'http://52.37.202.83:3000/delete');
+          req.open('POST', 'http://52.37.202.83:3000/delete');
           req.setRequestHeader('Content-Type', 'application/json');
           req.addEventListener('load', function() {
               if (req.status >= 200 && req.status < 400) {

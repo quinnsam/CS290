@@ -109,8 +109,9 @@ app.post('/add', function(req, res) {
 /*Route handler for deleting a row from the database*/
 /*Pass to it the id containing the row to be deleted.*/
 /*Returns the workouts table after deleting the row.*/
-app.delete('/delete', function(req, res){
+app.post('/delete', function(req, res){
   var context = {};
+  console.log("Server-side delete id: " + req.query.id);
   mysql.pool.query("DELETE FROM workouts WHERE id=?", [req.query.id], function(err, result){
     if (err){
       next(err);
