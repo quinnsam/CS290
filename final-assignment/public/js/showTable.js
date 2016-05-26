@@ -82,7 +82,7 @@ function buildTable(data) {
         });
         deleteForm.appendChild(delButton);
         row.appendChild(deleteForm);
-
+/*
         var updateForm = document.createElement("form");
         var updateButton = document.createElement("button");
         updateButton.textContent = "Update";
@@ -92,7 +92,7 @@ function buildTable(data) {
         };
         updateForm.appendChild(updateButton);
         row.appendChild(updateForm);
-
+*/
         //IMPORTANT - Store this id at the the end of the row.
         //It will be accessed using lastChild when deleting and updating.
         var hiddenId = document.createElement("input");
