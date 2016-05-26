@@ -6,10 +6,9 @@ req.addEventListener('load', function() {
     if (req.status >= 200 && req.status < 400) {
         var response = JSON.parse(req.responseText);
         console.log(response);
-        document.body.appendChild(buildTable(response));
-
-
-        document.getElementById("testResponse").textContent = JSON.stringify(response);
+        if (response.length) {
+            document.body.appendChild(buildTable(response));
+        }
     } else {
         console.log("Error in network request: " + req.statusText);
     }
@@ -19,7 +18,7 @@ req.send(null); //send JSON string-formatted object
 
 function buildTable(data) {
     var newTable = document.createElement("table");
-    newTable.id="workouts";
+    newTable.id = "workouts";
 
     var fields = Object.keys(data[0]);
     var headRow = document.createElement("tr");
