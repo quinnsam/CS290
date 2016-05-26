@@ -5,6 +5,7 @@ function addExButton() {
 
         if (!document.getElementById("exName").value){
           alert("You must enter a name!");
+          event.preventDefault();
           return;
         }
 
