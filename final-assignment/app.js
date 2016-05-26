@@ -111,8 +111,8 @@ app.post('/add', function(req, res) {
 /*Returns the workouts table after deleting the row.*/
 app.post('/delete', function(req, res){
   var context = {};
-  console.log("Server-side delete id: " + req.query.id);
-  mysql.pool.query("DELETE FROM workouts WHERE id=?", [req.query.id], function(err, result){
+  console.log("Server-side delete id: " + req.body.id);
+  mysql.pool.query("DELETE FROM workouts WHERE id=?", [req.body.id], function(err, result){
     if (err){
       next(err);
       return;
