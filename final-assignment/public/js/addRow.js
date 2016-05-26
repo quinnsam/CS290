@@ -39,6 +39,7 @@ function addExButton() {
             }
         });
         req.send(JSON.stringify(payload)); //send JSON string-formatted object
+        event.preventDefault();
     });
 }
 
