@@ -91,7 +91,7 @@ app.post('/add', function(req, res) {
                 next(err);
                 return;
             }
-            mysql.pool.query('SELECT MAX(id) FROM workouts', function(err, rows, fields) {
+            mysql.pool.query('SELECT * FROM workouts where id=(SELECT max(id) FROM workouts)', function(err, rows, fields) {
                 if (err) {
                     next(err);
                     return;

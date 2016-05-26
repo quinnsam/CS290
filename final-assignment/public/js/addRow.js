@@ -25,8 +25,7 @@ function addExButton() {
             if (req.status >= 200 && req.status < 400) {
                 var response = JSON.parse(req.responseText);
                 console.log(response);
-                document.body.table.appendChild(addRow(response));
-
+                document.getElementById("workouts").appendChild(addRow(response));                
                 document.getElementById("testResponse").textContent = JSON.stringify(response);
             } else {
                 console.log("Error in network request: " + req.statusText);

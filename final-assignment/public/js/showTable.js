@@ -19,6 +19,7 @@ req.send(null); //send JSON string-formatted object
 
 function buildTable(data) {
     var newTable = document.createElement("table");
+    newTable.id="workouts";
 
     var fields = Object.keys(data[0]);
     var headRow = document.createElement("tr");
