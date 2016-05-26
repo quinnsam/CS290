@@ -45,7 +45,7 @@ app.get('/', function(req, res, next) {
             return;
         }
         context.results = JSON.stringify(rows);
-        res.render('home');
+        res.render('updateForm');//res.render('home');
     });
 });
 
@@ -142,7 +142,7 @@ app.post('/update', function(req, res) {
         }
         console.log(rows);
         context.results = JSON.stringify(rows);
-        res.render('updateForm', context);
+        res.render('updateForm');
     });
 });
 
