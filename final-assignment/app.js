@@ -82,10 +82,14 @@ app.post('/add', function(req, res) {
         reps: req.body.reps,
         weight: req.body.weight,
         date: req.body.date,
-        lbs: 1
+        lbs: 0
     };
 
-    console.log(post.date);
+    //See if the units checkbox was checked.
+    if (req.body.checkbox === "checked"){
+      post.lbs = 1;
+    }
+
     //Add new row to the database and send back details to update table.
     mysql.pool.query('INSERT INTO workouts SET ?', post,
         function(err, results) {
