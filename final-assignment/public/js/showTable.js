@@ -45,7 +45,7 @@ function buildTable(data) {
         var delButton = document.createElement("button");
         delButton.textContent = "Delete";
         delButton.className = "delete";
-        delButton.addEventListener('click', function(event) {
+      /*  delButton.addEventListener('click', function(event) {
             var req = new XMLHttpRequest();
 
             //The hidden attribute rowId is stored in the lastchild of the row.
@@ -70,6 +70,7 @@ function buildTable(data) {
             req.send(JSON.stringify(payload)); //send JSON string-formatted object
             event.preventDefault();
         });
+        */
         row.appendChild(delButton);
 
         var updateButton = document.createElement("button");
