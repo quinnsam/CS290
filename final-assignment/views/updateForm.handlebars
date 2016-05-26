@@ -1,22 +1,22 @@
 
 <h2>Update this exercise</h2>
 <form method ="POST">
-  <label for="exName">{{results.[0].name}}</label>
+  <label for="exName">Name:</label>
   <input id="exName" type="text" name="name" value={{results.[0].name}}>
 
   <label for="exReps">Reps:</label>
   <input id="exReps" type="text" name="reps" value={{results.[0].reps}}>
 
   <label for="exWeight">Weight:</label>
-  <input id="exWeight" type="text" name="weight">
+  <input id="exWeight" type="text" name="weight" value={{results.[0].weight}}>
 
   <label for="exDate">Date:</label>
-  <input id="exDate" type="date" name="date">
+  <input id="exDate" type="date" name="date" value={{results.[0].date}}>
 
   <label for="unitCheckBox">lbs? (Leave unchecked for kg)</label>
   <input id="unitCheckBox" type="checkbox" name="bool" value="{{results.[0].lbs}}">
   <br/>
 
-  <input type="hidden" name="id" value={{results.[0].id}}
+  <input type="hidden" name="id" value={{results.[0].id}}>
   <input id="add" type="submit" name="add" value="add">
 </form>
