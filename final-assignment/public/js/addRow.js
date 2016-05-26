@@ -43,7 +43,7 @@ function addExButton() {
     });
 }
 
-function buildTable(data) {
+/*function buildTable(data) {
     var newTable = document.createElement("table");
     newTable.id = "workouts";
 
@@ -87,3 +87,4 @@ function buildTable(data) {
     });
     return newTable;
 }
+*/
