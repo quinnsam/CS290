@@ -33,7 +33,7 @@ function buildTable(data) {
 
         for (var i = 1; i < fields.length; i++) {
             var cell = document.createElement("td");
-            cell.textContent = object[field];
+            cell.textContent = object[fields];
             row.appendChild(cell);
         }
 
