@@ -13,9 +13,9 @@ req.addEventListener('load', function() {
             } else {
                 document.body.appendChild(buildTable(response));
             }
-        } else {
-            console.log("Error in network request: " + req.statusText);
         }
+    } else {
+        console.log("Error in network request: " + req.statusText);
     }
 });
 req.send(null); //send JSON string-formatted object
