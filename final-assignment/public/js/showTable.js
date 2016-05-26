@@ -61,7 +61,7 @@ function buildTable(data) {
             req.addEventListener('load', function() {
                 if (req.status >= 200 && req.status < 400) {
                     var curTable = document.getElementById("workouts");
-                    var curRowIdx = this.parentNode.rowIndex;
+                    var curRowIdx = delButton.parentNode.rowIndex;
                     curTable.deleteRow(curRowIdx);
                 } else {
                     console.log("Error in network request: " + req.statusText);
