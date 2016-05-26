@@ -24,8 +24,8 @@ function addExButton() {
         req.addEventListener('load', function() {
             if (req.status >= 200 && req.status < 400) {
                 var response = JSON.parse(req.responseText);
-
-                document.body.appendChild(buildTable(response));
+                console.log(response);
+                document.body.table.appendChild(addRow(response));
 
                 document.getElementById("testResponse").textContent = JSON.stringify(response);
             } else {
@@ -37,21 +37,10 @@ function addExButton() {
     });
 }
 
-function buildTable(data) {
-    var newTable = document.createElement("table");
+function addRow(data) {
 
-    var fields = Object.keys(data[0]);
-    var headRow = document.createElement("tr");
-    for (var i = 1; i < fields.length; i++) {
-        var headCell = document.createElement("th");
-        headCell.textContent = fields[i];
-        headRow.appendChild(headCell);
-    }
-    newTable.appendChild(headRow);
-
-    data.forEach(function(object) {
         var row = document.createElement("tr");
-
+        var fields = Object.keys(data[0]);
         for (var i = 1; i < fields.length; i++) {
             var cell = document.createElement("td");
             cell.textContent = object[fields[i]];
@@ -65,8 +54,5 @@ function buildTable(data) {
         var updateButton = document.createElement("button");
         updateButton.textContent = "Update";
         row.appendChild(updateButton);
-
-        newTable.appendChild(row);
-    });
-    return newTable;
+    return row;
 }
