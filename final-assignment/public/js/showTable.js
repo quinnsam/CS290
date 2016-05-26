@@ -87,7 +87,7 @@ function buildTable(data) {
         updateButton.className = "update";
         updateButton.onclick = function(){
           var rowId = updateButton.parentNode.parentNode.lastChild.value;
-          location.href = "http://52.37.202.83:3000/updateForm?id="+updateIndex;
+          location.href = "http://52.37.202.83:3000/updateForm?id="+rowId;
           event.preventDefault();
         };
         newForm.appendChild(updateButton);
