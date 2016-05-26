@@ -148,6 +148,27 @@ app.get('/updateForm', function(req, res, next) {
     });
 });
 
+app.post('/updateForm', function(req, res, next) {
+    var context = {};
+    mysql.pool.query('SELECT * FROM workouts WHERE id=?', [req.body.id], function(err, result) {
+        if (err) {
+            next(err);
+            return;
+        }
+        if (result.length == 1) {
+            var curVals = result[0];
+            mysql.pool.query('UPDATE workouts SET name=?, reps=?, weight=?, date=?, lbs=? WHERE id=?', [req.body.name || curVals.name, req.body.reps || curVals.reps, req.body.weight || curVals.weight, req.body.date || curVals.date, req.body.lbs || curVals.lbs, req.body.id],
+                function(err, result) {
+                    if (err) {
+                        next(err);
+                        return;
+                    }
+                    res.redirect('home');
+                });
+        }
+    });
+});
+
 /*Route handler for updating a row from the database*/
 /*Pass to it the id containing the row to be updated.*/
 /*Renders the update page and passes it the object matching the id.*/
