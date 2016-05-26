@@ -60,18 +60,9 @@ function buildTable(data) {
             req.setRequestHeader('Content-Type', 'application/json');
             req.addEventListener('load', function() {
                 if (req.status >= 200 && req.status < 400) {
-                    var response = JSON.parse(req.responseText);
-
-                    //If we have a response from the request, delete the row.
-                    if (response.length) {
-                        var curTable = document.getElementById("workouts");
-                        var rowCount = curTable.rows.length;
-                        curTable.deleteRow(rowCount - 1);
-                    } else {
-                        var curTable = document.getElementById("workouts");
-                        var rowCount = curTable.rows.length;
-                        curTable.deleteRow(-1);
-                    }
+                    var curTable = document.getElementById("workouts");
+                    var curRowIdx = this.parentNode.rowIndex;
+                    curTable.deleteRow(curRowIdx);
                 } else {
                     console.log("Error in network request: " + req.statusText);
                 }
