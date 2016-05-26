@@ -134,8 +134,8 @@ app.post('/delete', function(req, res) {
 /*Renders the update page and passes it the object matching the id.*/
 app.post('/update', function(req, res) {
     var context = {};
-    console.log("Server-side delete id: " + req.body.id);
-    mysql.pool.query("SELECT FROM workouts WHERE id=?", [req.body.id], function(err, rows, fields) {
+    console.log("Server-side update id: " + req.body.id);
+    mysql.pool.query('SELECT * FROM workouts WHERE id=?', [req.body.id], function(err, rows, fields) {
         if (err) {
             next(err);
             return;
