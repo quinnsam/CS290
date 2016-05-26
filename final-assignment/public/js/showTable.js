@@ -98,7 +98,7 @@ function buildTable(data) {
             };
 
             req.open('POST', 'http://52.37.202.83:3000/update');
-            //req.setRequestHeader('Content-Type', 'application/json');
+            req.setRequestHeader('Content-Type', 'application/json');
             req.send(JSON.stringify(payload)); //send JSON string-formatted object
         });
         newForm.appendChild(updateButton);
