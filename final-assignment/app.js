@@ -138,6 +138,7 @@ app.get('/updateForm', function(req,res,next){
       return;
     }
     context.results = JSON.stringify(rows);
+    console.log("Current update object: " + context.results);
     res.render('updateForm', context);
   });
 });
