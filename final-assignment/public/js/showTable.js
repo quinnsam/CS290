@@ -64,11 +64,13 @@ function buildTable(data) {
 
                     //If we have a response from the request, delete the row.
                     if (response.length) {
-                        if (document.getElementById("workouts")) {
-                            var curTable = document.getElementById("workouts");
-                            var rowCount = curTable.rows.length;
-                            curTable.deleteRow(rowCount-1);
-                          } 
+                        var curTable = document.getElementById("workouts");
+                        var rowCount = curTable.rows.length;
+                        curTable.deleteRow(rowCount - 1);
+                    } else {
+                        var curTable = document.getElementById("workouts");
+                        var rowCount = curTable.rows.length;
+                        curTable.deleteRow(-1);
                     }
                 } else {
                     console.log("Error in network request: " + req.statusText);
