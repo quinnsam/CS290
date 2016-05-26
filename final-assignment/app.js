@@ -163,7 +163,7 @@ app.post('/updateForm', function(req, res, next) {
                         next(err);
                         return;
                     }
-                    res.redirect('home');
+                    res.redirect('/');
                 });
         }
     });
