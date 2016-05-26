@@ -67,11 +67,18 @@ function buildTable(data) {
 
         var delButton = document.createElement("button");
         delButton.textContent = "Delete";
+        delButton.className = "delete";
         row.appendChild(delButton);
 
         var updateButton = document.createElement("button");
         updateButton.textContent = "Update";
+        updateButton.className = "update";
         row.appendChild(updateButton);
+
+        var hiddenId = document.createElement("input");
+        hiddenId.type = "hidden";
+        hiddenId.value = object.id;
+        row.appendChild(hiddenId);
 
         newTable.appendChild(row);
     });

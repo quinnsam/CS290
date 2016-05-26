@@ -40,12 +40,12 @@ function buildTable(data) {
 
         var delButton = document.createElement("button");
         delButton.textContent = "Delete";
-        delButton.class = "delete";
+        delButton.className = "delete";
         row.appendChild(delButton);
 
         var updateButton = document.createElement("button");
         updateButton.textContent = "Update";
-        updateButton.class = "update";
+        updateButton.className = "update";
         row.appendChild(updateButton);
 
         var hiddenId = document.createElement("input");
