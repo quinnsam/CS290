@@ -84,9 +84,9 @@ app.post('/add', function(req, res) {
         date: req.body.date,
         lbs: 0
     };
-
+    console.log(req.body.checkbox);
     //See if the units checkbox was checked.
-    if (req.body.checkbox === "checked"){
+    if (req.body.checkbox){
       post.lbs = 1;
     }
 
