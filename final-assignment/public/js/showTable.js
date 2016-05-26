@@ -82,17 +82,18 @@ function buildTable(data) {
         });
         deleteForm.appendChild(delButton);
         row.appendChild(deleteForm);
-/*
+
         var updateForm = document.createElement("form");
         var updateButton = document.createElement("button");
         updateButton.textContent = "Update";
         updateButton.className = "update";
         updateButton.onclick = function(){
           location.href = "http://52.37.202.83:3000/updateForm";
+          event.preventDefault();
         };
         updateForm.appendChild(updateButton);
         row.appendChild(updateForm);
-*/
+
         //IMPORTANT - Store this id at the the end of the row.
         //It will be accessed using lastChild when deleting and updating.
         var hiddenId = document.createElement("input");

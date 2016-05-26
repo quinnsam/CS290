@@ -129,7 +129,7 @@ app.post('/delete', function(req, res) {
     });
 });
 
-/*
+
 app.get('/updateForm', function(req,res,next){
   var context = {};
   mysql.pool.query('SELECT * FROM workouts WHERE id=?',[req.query.id], function(err,rows, fields){
@@ -141,7 +141,7 @@ app.get('/updateForm', function(req,res,next){
     res.render('updateForm', context);
   });
 });
-*/
+
 /*Route handler for updating a row from the database*/
 /*Pass to it the id containing the row to be updated.*/
 /*Renders the update page and passes it the object matching the id.*/
