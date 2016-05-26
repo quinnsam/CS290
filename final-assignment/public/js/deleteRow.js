@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', deleteRow);
 
 function deleteRow() {
-    document.getElementByClassName("delete").addEventListener('click', function(event) {
+    document.getElementsByClassName("delete").addEventListener('click', function(event) {
         var req = new XMLHttpRequest();
 
         //The hidden attribute rowId is stored in the lastchild of the row.
