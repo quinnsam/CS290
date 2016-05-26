@@ -35,13 +35,16 @@ function buildTable(data) {
         for (var i = 1; i < fields.length; i++) {
             var cell = document.createElement("td");
             cell.textContent = object[fields];
+            console.log(object[fields]);
             row.appendChild(cell);
         }
 
         var delButton = document.createElement("button");
+        delButton.textContent = Delete;
         row.appendChild(delButton);
 
         var updateButton = document.createElement("button");
+        updateButton.textContent = Update;
         row.appendChild(updateButton);
 
         newTable.appendChild(row);
