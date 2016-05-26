@@ -1,3 +1,7 @@
 table.workouts{border:1px solid black;}
   table.workouts td{border:1px solid black;}
   table.workouts th{border:1px solid black;}
+
+  label{
+    display: block;
+  }
